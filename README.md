@@ -80,7 +80,7 @@ CREATE TABLE offers (
 );
 ```
 ## INSERTING ROWS
-
+``` text
 -- CANDIDATES
 -- NOTE: NAMES WILL NOT BE GIVEN
 INSERT INTO candidates
@@ -96,7 +96,7 @@ SELECT
     (ARRAY['USA','Canada','UK','Germany','India','Australia'])[1 + floor(random()*6)::int] AS country,
     CURRENT_DATE - (floor(random()*1500)::int) AS created_at
 FROM generate_series(1,5000) gs;
-
+```
 -- COMPANIES
 -- NOTE: COMANY NAMES WILL BE PUT AS PLACEHOLDERS e.g Company_1, Company_2, etc
 INSERT INTO companies

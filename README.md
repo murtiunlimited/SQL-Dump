@@ -97,6 +97,7 @@ SELECT
     CURRENT_DATE - (floor(random()*1500)::int) AS created_at
 FROM generate_series(1,5000) gs;
 ```
+``` text
 -- COMPANIES
 -- NOTE: COMANY NAMES WILL BE PUT AS PLACEHOLDERS e.g Company_1, Company_2, etc
 INSERT INTO companies
@@ -108,6 +109,8 @@ SELECT
     (ARRAY['USA','Canada','UK','Germany','India'])[1 + floor(random()*5)::int] AS headquarters_country,
     1980 + floor(random()*40)::int AS founded_year
 FROM generate_series(1,150) gs;
+```
+``` text
 -- JOBS
 INSERT INTO jobs
 SELECT
@@ -128,6 +131,8 @@ SELECT
     (ARRAY['USA','Canada','UK','Germany','India','Remote'])[1 + floor(random()*6)::int] AS location_country,
     CURRENT_DATE - (floor(random()*365)::int) AS posted_date
 FROM generate_series(1,2500) gs;
+```
+``` text
 -- APPLICATIONS
 INSERT INTO applications
 SELECT
@@ -147,6 +152,8 @@ SELECT
     round((random()*4 + 1)::numeric, 2) AS interview_score,  -- 1 to 5
     CURRENT_DATE - (floor(random()*300)::int) AS interview_date
 FROM generate_series(1,20000) gs;
+```
+``` text
 -- OFFERS
 INSERT INTO offers
 SELECT
@@ -157,7 +164,7 @@ SELECT
     (ARRAY['Extended','Accepted','Rejected'])[1 + floor(random()*3)::int] AS offer_status,
     CURRENT_DATE - (floor(random()*180)::int) AS offer_date
 FROM generate_series(1,4000) gs;
-
+```
 
 ## FIXING CANDIDATE NAMES
 -- RUN IN SAME CONNECTION WHERE YOU MADE ALL TABLES AND DATABASE

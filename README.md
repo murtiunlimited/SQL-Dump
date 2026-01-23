@@ -167,6 +167,8 @@ FROM generate_series(1,4000) gs;
 ```
 
 ## FIXING CANDIDATE NAMES
+
+``` text
 -- RUN IN SAME CONNECTION WHERE YOU MADE ALL TABLES AND DATABASE
 CREATE TEMP TABLE temp_candidate_names (
     first_name VARCHAR(100),
@@ -185,7 +187,8 @@ FROM (
     FROM temp_candidate_names
 ) AS t
 WHERE c.candidate_id = t.rn;
-
+```
+``` text
 ## FIXING COMPANY NAMES
 
 CREATE TEMP TABLE temp_company_names (
@@ -201,7 +204,7 @@ FROM (
     FROM temp_company_names
 ) AS t
 WHERE c.company_id = t.rn;
-
+```
 ## 🟢 EASY — Foundational SQL
 
 Basic filtering, grouping, and aggregation.

@@ -6,6 +6,7 @@ The problems are organized by difficulty, progressing from foundational queries 
 ---
 
 ## CREATING TABLES
+``` text
 CREATE TABLE candidates (
     candidate_id INT PRIMARY KEY,
     first_name VARCHAR(100),
@@ -18,7 +19,7 @@ CREATE TABLE candidates (
     country VARCHAR(50),
     created_at DATE
 );
-
+```
 CREATE TABLE companies (
     company_id INT PRIMARY KEY,
     company_name VARCHAR(100),
@@ -27,7 +28,7 @@ CREATE TABLE companies (
     headquarters_country VARCHAR(50),
     founded_year INT
 );
-
+``` text
 CREATE TABLE jobs (
     job_id INT PRIMARY KEY,
     company_id INT,
@@ -41,7 +42,7 @@ CREATE TABLE jobs (
     posted_date DATE,
     FOREIGN KEY (company_id) REFERENCES companies(company_id)
 );
-
+```
 CREATE TABLE applications (
     application_id INT PRIMARY KEY,
     candidate_id INT,
@@ -52,7 +53,7 @@ CREATE TABLE applications (
     FOREIGN KEY (candidate_id) REFERENCES candidates(candidate_id),
     FOREIGN KEY (job_id) REFERENCES jobs(job_id)
 );
-
+``` text
 CREATE TABLE interviews (
     interview_id INT PRIMARY KEY,
     application_id INT,
@@ -62,7 +63,7 @@ CREATE TABLE interviews (
     interview_date DATE,
     FOREIGN KEY (application_id) REFERENCES applications(application_id)
 );
-
+``` text
 CREATE TABLE offers (
     offer_id INT PRIMARY KEY,
     application_id INT,
@@ -72,7 +73,7 @@ CREATE TABLE offers (
     offer_date DATE,
     FOREIGN KEY (application_id) REFERENCES applications(application_id)
 );
-
+```
 ## INSERTING ROWS
 -- CANDIDATES
 -- NOTE: NAMES WILL NOT BE GIVEN

@@ -20,6 +20,7 @@ CREATE TABLE candidates (
     created_at DATE
 );
 ```
+``` text
 CREATE TABLE companies (
     company_id INT PRIMARY KEY,
     company_name VARCHAR(100),
@@ -28,6 +29,7 @@ CREATE TABLE companies (
     headquarters_country VARCHAR(50),
     founded_year INT
 );
+```
 ``` text
 CREATE TABLE jobs (
     job_id INT PRIMARY KEY,
@@ -43,6 +45,7 @@ CREATE TABLE jobs (
     FOREIGN KEY (company_id) REFERENCES companies(company_id)
 );
 ```
+``` text
 CREATE TABLE applications (
     application_id INT PRIMARY KEY,
     candidate_id INT,
@@ -53,6 +56,7 @@ CREATE TABLE applications (
     FOREIGN KEY (candidate_id) REFERENCES candidates(candidate_id),
     FOREIGN KEY (job_id) REFERENCES jobs(job_id)
 );
+```
 ``` text
 CREATE TABLE interviews (
     interview_id INT PRIMARY KEY,
@@ -64,6 +68,7 @@ CREATE TABLE interviews (
     FOREIGN KEY (application_id) REFERENCES applications(application_id)
 );
 ```
+``` text
 CREATE TABLE offers (
     offer_id INT PRIMARY KEY,
     application_id INT,
@@ -73,7 +78,7 @@ CREATE TABLE offers (
     offer_date DATE,
     FOREIGN KEY (application_id) REFERENCES applications(application_id)
 );
-
+```
 ## INSERTING ROWS
 ``` text
 -- CANDIDATES
@@ -92,6 +97,7 @@ SELECT
     CURRENT_DATE - (floor(random()*1500)::int) AS created_at
 FROM generate_series(1,5000) gs;
 ```
+``` text
 -- CANDIDATES
 -- NOTE: COMANY NAMES WILL BE PUT AS PLACEHOLDERS e.g Company_1, Company_2, etc
 INSERT INTO companies
@@ -103,6 +109,7 @@ SELECT
     (ARRAY['USA','Canada','UK','Germany','India'])[1 + floor(random()*5)::int] AS headquarters_country,
     1980 + floor(random()*40)::int AS founded_year
 FROM generate_series(1,150) gs;
+```
 ``` text
 -- JOBS
 INSERT INTO jobs
@@ -156,6 +163,7 @@ SELECT
     CURRENT_DATE - (floor(random()*180)::int) AS offer_date
 FROM generate_series(1,4000) gs;
 ```
+``` text
 
 ## FIXING CANDIDATE NAMES
 ``` text
@@ -178,6 +186,7 @@ FROM (
 ) AS t
 WHERE c.candidate_id = t.rn;
 ```
+``` text
 ## FIXING COMPANY NAMES
 ``` text
 CREATE TEMP TABLE temp_company_names (
